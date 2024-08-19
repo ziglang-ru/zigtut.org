@@ -1,0 +1,45 @@
+---
+# SPDX-FileCopyrightText: 2020 Sobeston and zig.guide contributors
+# SPDX-FileCopyrightText: 2024 BratishkaErik and zigtutor.ru contributors
+#
+# SPDX-License-Identifier: MIT
+
+title: Floats
+
+slug: language-basics/floats
+sidebar:
+    order: 19
+---
+
+import { Code } from "@astrojs/starlight/components";
+
+import FloatsWidening from "19.floats-widening.zig?raw";
+import FloatsLiterals from "19.floats-literals.zig?raw";
+import FloatsHexUnderscores from "19.floats-hex-underscores.zig?raw";
+import FloatsConversion from "19.floats-conversion.zig?raw";
+
+Zig's floats are strictly IEEE-compliant unless
+[`@setFloatMode(.Optimized)`](https://ziglang.org/documentation/master/#setFloatMode)
+is used, which is equivalent to GCC's `-ffast-math`. Floats coerce to larger
+float types.
+
+<Code code={FloatsWidening} collapse="1-2" lang="zig"/>
+
+Floats support multiple kinds of literal.
+
+<Code code={FloatsLiterals} lang="zig"/>
+
+Underscores may also be placed between digits.
+
+<Code code={FloatsHexUnderscores} lang="zig"/>
+
+Integers and floats may be converted using the built-in functions
+[`@floatFromInt`](https://ziglang.org/documentation/0.12.0/#floatFromInt) and
+[`@intFromFloat`](https://ziglang.org/documentation/0.12.0/#intFromFloat).
+[`@floatFromInt`](https://ziglang.org/documentation/0.12.0/#floatFromInt) is
+always safe, whereas
+[`@intFromFloat`](https://ziglang.org/documentation/0.12.0/#intFromFloat) is
+detectable illegal behaviour if the float value cannot fit in the integer
+destination type.
+
+<Code code={FloatsConversion} collapse="1-2" lang="zig"/>

@@ -1,0 +1,31 @@
+---
+# SPDX-FileCopyrightText: 2020 Sobeston and zig.guide contributors
+# SPDX-FileCopyrightText: 2024 BratishkaErik and zigtutor.ru contributors
+#
+# SPDX-License-Identifier: MIT
+
+title: JSON
+
+slug: standard-library/json
+sidebar:
+    order: 6
+---
+
+import { Code } from "@astrojs/starlight/components";
+
+import JsonParse from "06.json-parse.zig?raw";
+import JsonStringify from "06.json-stringify.zig?raw";
+import JsonStringifyStrings from "06.json-stringify-strings.zig?raw";
+
+Let's parse a JSON string into a struct type, using the streaming parser.
+
+<Code code={JsonParse} collapse="1-4" lang="zig"/>
+
+And using stringify to turn arbitrary data into a string.
+
+<Code code={JsonStringify} collapse="1-6" lang="zig"/>
+
+The JSON parser requires an allocator for javascript's string, array, and map
+types.
+
+<Code code={JsonStringifyStrings} collapse="1-5" lang="zig"/>

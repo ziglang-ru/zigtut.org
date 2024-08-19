@@ -1,0 +1,36 @@
+---
+# SPDX-FileCopyrightText: 2020 Sobeston and zig.guide contributors
+# SPDX-FileCopyrightText: 2024 BratishkaErik and zigtutor.ru contributors
+#
+# SPDX-License-Identifier: MIT
+
+title: Assignment
+
+slug: language-basics/assignment
+sidebar:
+    order: 1
+---
+
+import { Code } from "@astrojs/starlight/components";
+import Assignment from "01.assignment.zig?raw";
+import Undefined from "01.undefined.zig?raw";
+
+Value assignment has the following syntax:
+`(const|var) identifier[: type] = value`.
+
+- `const` indicates that `identifier` is a **constant** that stores an immutable
+  value.
+- `var` indicates that `identifier` is a **variable** that stores a mutable
+  value.
+- `: type` is a type annotation for `identifier`, and may be omitted if the data
+  type of `value` can be inferred.
+
+<Code code={Assignment} lang="zig"/>
+
+Constants and variables _must_ have a value. If no known value can be given, the
+[`undefined`](https://ziglang.org/documentation/master/#undefined) value, which
+coerces to any type, may be used as long as a type annotation is provided.
+
+<Code code={Undefined} lang="zig"/>
+
+Where possible, `const` values are preferred over `var` values.

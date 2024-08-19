@@ -1,0 +1,23 @@
+---
+# SPDX-FileCopyrightText: 2020 Sobeston and zig.guide contributors
+# SPDX-FileCopyrightText: 2024 BratishkaErik and zigtutor.ru contributors
+#
+# SPDX-License-Identifier: MIT
+
+title: For loops
+
+slug: language-basics/for-loops
+sidebar:
+    order: 5
+---
+
+import { Code } from "@astrojs/starlight/components";
+
+import For from "05.for.zig?raw";
+
+For loops are used to iterate over arrays (and other types, to be discussed
+later). For loops follow this syntax. Like while, for loops can use `break` and
+`continue`. Here, we've had to assign values to `_`, as Zig does not allow us to
+have unused values.
+
+<Code code={For} collapse="1-2" lang="zig"/>

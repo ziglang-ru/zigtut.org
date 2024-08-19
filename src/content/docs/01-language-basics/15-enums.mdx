@@ -1,0 +1,54 @@
+---
+# SPDX-FileCopyrightText: 2020 Sobeston and zig.guide contributors
+# SPDX-FileCopyrightText: 2024 BratishkaErik and zigtutor.ru contributors
+#
+# SPDX-License-Identifier: MIT
+
+title: Enums
+
+slug: language-basics/enums
+sidebar:
+    order: 15
+---
+
+import { Code } from "@astrojs/starlight/components";
+
+import EnumOrdinal from "15.enum-ordinal.zig?raw";
+import EnumOrdinalOverride from "15.enum-ordinal-override.zig?raw";
+import EnumMethods from "15.enum-methods.zig?raw";
+import EnumDeclarations from "15.enum-declarations.zig?raw";
+
+Zig's enums allow you to define types with a restricted set of named values.
+
+Let's declare an enum.
+
+```zig
+const Direction = enum { north, south, east, west };
+```
+
+Enums types may have specified (integer) tag types.
+
+```zig
+const Value = enum(u2) { zero, one, two };
+```
+
+Enum's ordinal values start at 0. They can be accessed with the built-in
+function
+[`@intFromEnum`](https://ziglang.org/documentation/master/#intFromEnum).
+
+<Code code={EnumOrdinal} collapse="1-4" lang="zig"/>
+
+Values can be overridden, with the next values continuing from there.
+
+<Code code={EnumOrdinalOverride} collapse="1-2" lang="zig"/>
+
+Enums can be given methods. These act as namespaced functions that can be called
+with the dot syntax.
+
+<Code code={EnumMethods} collapse="1-2" lang="zig"/>
+
+Enums can also be given `var` and `const` declarations. These act as namespaced
+globals and their values are unrelated and unattached to instances of the enum
+type.
+
+<Code code={EnumDeclarations} collapse="1-2" lang="zig"/>

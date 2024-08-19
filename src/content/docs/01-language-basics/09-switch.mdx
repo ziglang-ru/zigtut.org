@@ -1,0 +1,37 @@
+---
+# SPDX-FileCopyrightText: 2020 Sobeston and zig.guide contributors
+# SPDX-FileCopyrightText: 2024 BratishkaErik and zigtutor.ru contributors
+#
+# SPDX-License-Identifier: MIT
+
+title: Switch
+
+slug: language-basics/switch
+sidebar:
+    order: 9
+---
+
+import { Code } from "@astrojs/starlight/components";
+
+import SwitchStatement from "09.switch-statement.zig?raw";
+import SwitchExpression from "09.switch-expression.zig?raw";
+
+Zig's `switch` works as both a statement and an expression. The types of all
+branches must coerce to the type which is being switched upon. All possible
+values must have an associated branch - values cannot be left out. Cases cannot
+fall through to other branches.
+
+An example of a switch statement. The else is required to satisfy the
+exhaustiveness of this switch.
+
+<Code code={SwitchStatement} collapse="1-2" lang="zig"/>
+
+Here is the former, but as a switch expression.
+
+<Code code={SwitchExpression} collapse="1-2" lang="zig"/>
+
+:::tip
+
+Now is the perfect time to use what you've learned and [solve a problem together](/posts/fizz-buzz).
+
+:::

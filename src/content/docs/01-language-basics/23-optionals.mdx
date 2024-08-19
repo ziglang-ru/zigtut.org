@@ -1,0 +1,62 @@
+---
+# SPDX-FileCopyrightText: 2020 Sobeston and zig.guide contributors
+# SPDX-FileCopyrightText: 2024 BratishkaErik and zigtutor.ru contributors
+#
+# SPDX-License-Identifier: MIT
+
+title: Optionals
+
+slug: language-basics/optionals
+sidebar:
+    order: 23
+---
+
+import { Code } from "@astrojs/starlight/components";
+
+import OptionalsFind from "23.optionals-find.zig?raw";
+import OptionalsOrelse from "23.optionals-orelse.zig?raw";
+import OptionalsOrelseUnreachable from "23.optionals-orelse-unreachable.zig?raw";
+import OptionalsIfPayload from "23.optionals-if-payload.zig?raw";
+import OptionalsWhileCapture from "23.optionals-while-capture.zig?raw";
+
+Optionals use the syntax `?T` and are used to store the data
+[`null`](https://ziglang.org/documentation/master/#null), or a value of type
+`T`.
+
+<Code code={OptionalsFind} collapse="1-2" lang="zig"/>
+
+Optionals support the `orelse` expression, which acts when the optional is
+[`null`](https://ziglang.org/documentation/master/#null). This unwraps the
+optional to its child type.
+
+<Code code={OptionalsOrelse} collapse="1-2" lang="zig"/>
+
+`.?` is a shorthand for `orelse unreachable`. This is used for when you know it
+is impossible for an optional value to be null, and using this to unwrap a
+[`null`](https://ziglang.org/documentation/master/#null) value is detectable
+illegal behaviour.
+
+<Code code={OptionalsOrelseUnreachable} collapse="1-2" lang="zig"/>
+
+Both `if` expressions and `while` loops support taking optional values as conditions,
+allowing you to "capture" the inner non-null value.
+
+Here we use an `if` optional payload capture; a and b are equivalent here.
+`if (b) |value|` captures the value of `b` (in the cases where `b` is not null),
+and makes it available as `value`. As in the union example, the captured value
+is immutable, but we can still use a pointer capture to modify the value stored
+in `b`.
+
+<Code code={OptionalsIfPayload} collapse="1-2" lang="zig"/>
+
+And with `while`:
+
+<Code code={OptionalsWhileCapture} collapse="1-2" lang="zig"/>
+
+Optional pointer and optional slice types do not take up any extra memory
+compared to non-optional ones. This is because internally they use the 0 value
+of the pointer for `null`.
+
+This is how null pointers in Zig work - they must be unwrapped to a non-optional
+before dereferencing, which stops null pointer dereferences from happening
+accidentally.

@@ -1,0 +1,33 @@
+---
+# SPDX-FileCopyrightText: 2020 Sobeston and zig.guide contributors
+# SPDX-FileCopyrightText: 2024 BratishkaErik and zigtutor.ru contributors
+#
+# SPDX-License-Identifier: MIT
+
+title: If Expressions
+
+slug: language-basics/if
+sidebar:
+    order: 3
+---
+
+import { Code } from "@astrojs/starlight/components";
+
+import Expect from "03.expect.zig?raw";
+import IfExpression from "03.if-expression.zig?raw";
+
+Zig's if statements accept `bool` values (i.e. `true` or `false`). Unlike languages
+like C or Javascript, there are no values that implicitly coerce to bool values.
+
+Here, we will introduce testing. Save the below code and compile + run it with
+`zig test file-name.zig`. We will be using the
+[`expect`](https://ziglang.org/documentation/master/std/#std.testing.expect)
+function from the standard library, which will cause the test to fail if it's
+given the value `false`. When a test fails, the error and stack trace will be
+shown.
+
+<Code code={Expect} lang="zig"/>
+
+If statements also work as expressions.
+
+<Code code={IfExpression} collapse="1-2" lang="zig"/>

@@ -1,0 +1,30 @@
+---
+# SPDX-FileCopyrightText: 2020 Sobeston and zig.guide contributors
+# SPDX-FileCopyrightText: 2024 BratishkaErik and zigtutor.ru contributors
+#
+# SPDX-License-Identifier: MIT
+
+title: Defer
+
+slug: language-basics/defer
+sidebar:
+    order: 7
+---
+
+import { Code } from "@astrojs/starlight/components";
+
+import Defer from "07.defer.zig?raw";
+import DeferMulti from "07.defer-multi.zig?raw";
+
+Defer is used to execute a statement while exiting the current block.
+
+<Code code={Defer} collapse="1-2" lang="zig"/>
+
+When there are multiple defers in a single block, they are executed in reverse
+order.
+
+<Code code={DeferMulti} collapse="1-2" lang="zig"/>
+
+Defer is useful to ensure that resources are cleaned up when they are no longer needed.
+Instead of needing to remember to manually free up the resource,
+you can add a defer statement right next to the statement that allocates the resource.

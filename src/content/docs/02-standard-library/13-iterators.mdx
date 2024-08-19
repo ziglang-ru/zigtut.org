@@ -1,0 +1,42 @@
+---
+# SPDX-FileCopyrightText: 2020 Sobeston and zig.guide contributors
+# SPDX-FileCopyrightText: 2024 BratishkaErik and zigtutor.ru contributors
+#
+# SPDX-License-Identifier: MIT
+
+title: Iterators
+
+slug: standard-library/iterators
+sidebar:
+    order: 13
+---
+
+import { Code } from "@astrojs/starlight/components";
+
+import IteratorsSplit from "13.iterators-split.zig?raw";
+import IteratorsLooping from "13.iterators-looping.zig?raw";
+import IteratorsCustom from "13.iterators-custom.zig?raw";
+
+It is a common idiom to have a struct type with a `next` function with an
+optional in its return type, so that the function may return a null to indicate
+that iteration is finished.
+
+[`std.mem.SplitIterator`](https://ziglang.org/documentation/master/std/#std.mem.SplitIterator)
+(and the subtly different
+[`std.mem.TokenIterator`](https://ziglang.org/documentation/master/std/#std.mem.TokenIterator))
+is an example of this pattern.
+
+<Code code={IteratorsSplit} collapse="1-4" lang="zig"/>
+
+Some iterators have a `!?T` return type, as opposed to ?T. `!?T` requires that
+we unpack the error union before the optional, meaning that the work done to get
+to the next iteration may error. Here is an example of doing this with a loop.
+[`cwd`](https://ziglang.org/documentation/master/std/#std;fs.cwd) has to be
+opened with iterate permissions for the directory iterator to work.
+
+<Code code={IteratorsLooping} collapse="1-3" lang="zig"/>
+
+Here we will implement a custom iterator. This will iterate over a slice of
+strings, yielding the strings which contain a given string.
+
+<Code code={IteratorsCustom} collapse="1-4" lang="zig"/>

@@ -1,0 +1,57 @@
+---
+# SPDX-FileCopyrightText: 2020 Sobeston and zig.guide contributors
+# SPDX-FileCopyrightText: 2024 BratishkaErik and zigtutor.ru contributors
+#
+# SPDX-License-Identifier: MIT
+
+title: Structs
+
+slug: language-basics/structs
+sidebar:
+    order: 16
+---
+
+import { Code } from "@astrojs/starlight/components";
+
+import Struct from "16.struct.zig?raw";
+import StructDefaults from "16.struct-defaults.zig?raw";
+import StructDeclarations from "16.struct-declarations.zig?raw";
+
+Structs are Zig's most common kind of composite data type, allowing you to
+define types that can store a fixed set of named fields. Zig gives no guarantees
+about the in-memory order of fields in a struct or its size. Like arrays,
+structs are also neatly constructed with `T{}` syntax. Here is an example of
+declaring and filling a struct.
+
+<Code code={Struct} lang="zig"/>
+
+Struct fields cannot be implicitly uninitialised:
+
+```zig
+test "missing struct field" {
+    const my_vector = Vec3{
+        .x = 0,
+        .z = 50,
+    };
+    _ = my_vector;
+}
+```
+
+```
+error: missing field: 'y'
+    const my_vector = Vec3{
+                        ^
+```
+
+Fields may be given defaults:
+
+<Code code={StructDefaults} lang="zig"/>
+
+Like enums, structs may also contain functions and declarations.
+
+Structs have the unique property that when given a pointer to a struct, one
+level of dereferencing is done automatically when accessing fields. Notice how,
+in this example, `self.x` and `self.y` are accessed in the swap function without
+needing to dereference the self pointer.
+
+<Code code={StructDeclarations} collapse="1-2" lang="zig"/>

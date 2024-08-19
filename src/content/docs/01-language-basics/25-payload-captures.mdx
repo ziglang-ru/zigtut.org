@@ -1,0 +1,60 @@
+---
+# SPDX-FileCopyrightText: 2020 Sobeston and zig.guide contributors
+# SPDX-FileCopyrightText: 2024 BratishkaErik and zigtutor.ru contributors
+#
+# SPDX-License-Identifier: MIT
+
+title: Payload Captures
+
+slug: language-basics/payload-captures
+sidebar:
+    order: 25
+---
+
+import { Code } from "@astrojs/starlight/components";
+
+import PayloadCapturesOptionalIf from "25.payload-captures-optional-if.zig?raw";
+import PayloadCapturesErrorUnionIf from "25.payload-captures-error-union-if.zig?raw";
+import PayloadCapturesWhileOptional from "25.payload-captures-while-optional.zig?raw";
+import PayloadCapturesWhileErrorUnion from "25.payload-captures-while-error-union.zig?raw";
+import PayloadCapturesForCapture from "25.payload-captures-for-capture.zig?raw";
+import PayloadCapturesSwitchCapture from "25.payload-captures-switch-capture.zig?raw";
+import PayloadCapturesForPointerCapture from "25.payload-captures-for-pointer-capture.zig?raw";
+
+Payload captures use the syntax `|value|` and appear in many places, some of
+which we've seen already. Wherever they appear, they are used to "capture" the
+value from something.
+
+With if statements and optionals.
+
+<Code code={PayloadCapturesOptionalIf} collapse="1-2" lang="zig"/>
+
+With if statements and error unions. The else with the error capture is required
+here.
+
+<Code code={PayloadCapturesErrorUnionIf} collapse="1-2" lang="zig"/>
+
+With while loops and optionals. This may have an else block.
+
+<Code code={PayloadCapturesWhileOptional} collapse="1-2" lang="zig"/>
+
+With while loops and error unions. The else with the error capture is required
+here.
+
+<Code code={PayloadCapturesWhileErrorUnion} collapse="1-2" lang="zig"/>
+
+For loops.
+
+<Code code={PayloadCapturesForCapture} collapse="1-2" lang="zig"/>
+
+Switch cases on tagged unions.
+
+<Code code={PayloadCapturesSwitchCapture} collapse="1-2" lang="zig"/>
+
+As we saw in the Union and Optional sections above, values captured with the
+`|val|` syntax are immutable (similar to function arguments), but we can use
+pointer capture to modify the original values. This captures the values as
+pointers that are themselves still immutable, but because the value is now a
+pointer, we can modify the original value by dereferencing it:
+
+<Code code={PayloadCapturesForPointerCapture} collapse="1-4" lang="zig"/>

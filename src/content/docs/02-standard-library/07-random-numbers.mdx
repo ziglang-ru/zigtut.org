@@ -1,0 +1,33 @@
+---
+# SPDX-FileCopyrightText: 2020 Sobeston and zig.guide contributors
+# SPDX-FileCopyrightText: 2024 BratishkaErik and zigtutor.ru contributors
+#
+# SPDX-License-Identifier: MIT
+
+title: Random Numbers
+
+slug: standard-library/random-numbers
+sidebar:
+    order: 7
+---
+
+import { Code } from "@astrojs/starlight/components";
+
+import RandomNumbers from "07.random-numbers.zig?raw";
+import RandomNumbersCrypto from "07.random-numbers-crypto.zig?raw";
+
+Here, we create a new prng using a 64-bit random seed. a, b, c, and d are given
+random values via this prng. The expressions giving c and d values are
+equivalent. `DefaultPrng` is `Xoroshiro128`; there are other prngs available in
+std.rand.
+
+<Code code={RandomNumbers} collapse="1-2" lang="zig"/>
+
+Cryptographically secure random is also available.
+
+<Code code={RandomNumbersCrypto} collapse="1-2" lang="zig"/>
+
+:::tip
+We can now use our knowledge of std.rand and [make a guessing game together](/posts/a-guessing-game).
+
+:::

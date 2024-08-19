@@ -1,0 +1,95 @@
+---
+# SPDX-FileCopyrightText: 2020 Sobeston and zig.guide contributors
+# SPDX-FileCopyrightText: 2024 BratishkaErik and zigtutor.ru contributors
+#
+# SPDX-License-Identifier: MIT
+
+title: Comptime
+
+slug: language-basics/comptime
+sidebar:
+    order: 25
+---
+
+import { Code } from "@astrojs/starlight/components";
+
+import ComptimeBlocks from "24.comptime-blocks.zig?raw";
+import ComptimeInts from "24.comptime-ints.zig?raw";
+import ComptimeTypeBranching from "24.comptime-type-branching.zig?raw";
+import ComptimeReturningType from "24.comptime-returning-type.zig?raw";
+import ComptimeTypeinfo from "24.comptime-typeinfo.zig?raw";
+import ComptimeType from "24.comptime-type.zig?raw";
+import ComptimeReturnStruct from "24.comptime-return-struct.zig?raw";
+import ComptimeAnytype from "24.comptime-anytype.zig?raw";
+import ComptimeConcatRepeat from "24.comptime-concat-repeat.zig?raw";
+
+Blocks of code may be forcibly executed at compile time using the
+[`comptime`](https://ziglang.org/documentation/master/#comptime) keyword. In
+this example, the variables x and y are equivalent.
+
+<Code code={ComptimeBlocks} collapse="1-2" lang="zig"/>
+
+Integer literals are of the type `comptime_int`. These are special in that they
+have no size (they cannot be used at runtime!), and they have arbitrary
+precision. `comptime_int` values coerce to any integer type that can hold them.
+They also coerce to floats. Character literals are of this type.
+
+<Code code={ComptimeInts} collapse="1-2" lang="zig"/>
+
+`comptime_float` is also available, which internally is an `f128`. These cannot
+be coerced to integers, even if they hold an integer value.
+
+Types in Zig are values of the type `type`. These are available at compile time.
+We have previously encountered them by checking
+[`@TypeOf`](https://ziglang.org/documentation/master/#TypeOf) and comparing with
+other types, but we can do more.
+
+<Code code={ComptimeTypeBranching} collapse="1-2" lang="zig"/>
+
+Function parameters in Zig can be tagged as being
+[`comptime`](https://ziglang.org/documentation/master/#comptime). This means
+that the value passed to that function parameter must be known at compile time.
+Let's make a function that returns a type. Notice how this function is
+PascalCase, as it returns a type.
+
+<Code code={ComptimeReturningType} collapse="1-2" lang="zig"/>
+
+We can reflect upon types using the built-in
+[`@typeInfo`](https://ziglang.org/documentation/master/#typeInfo), which takes
+in a `type` and returns a tagged union. This tagged union type can be found in
+[`std.builtin.Type`](https://ziglang.org/documentation/master/std/#std.builtin.Type)
+(info on how to make use of imports and std later).
+
+<Code code={ComptimeTypeinfo} collapse="1-2" lang="zig"/>
+
+We can use the [`@Type`](https://ziglang.org/documentation/master/#Type)
+function to create a type from a
+[`@typeInfo`](https://ziglang.org/documentation/master/#typeInfo).
+[`@Type`](https://ziglang.org/documentation/master/#Type) is implemented for
+most types but is notably unimplemented for enums, unions, functions, and
+structs.
+
+Here anonymous struct syntax is used with `.{}`, because the `T` in `T{}` can be
+inferred. Anonymous structs will be covered in detail later. In this example we
+will get a compile error if the `Int` tag isn't set.
+
+<Code code={ComptimeType} collapse="1-2" lang="zig"/>
+
+Returning a struct type is how you make generic data structures in Zig. The
+usage of [`@This`](https://ziglang.org/documentation/master/#This) is required
+here, which gets the type of the innermost struct, union, or enum. Here
+[`std.mem.eql`](https://ziglang.org/documentation/master/std/#std;mem.eql) is
+also used which compares two slices.
+
+<Code code={ComptimeReturnStruct} collapse="1-2" lang="zig"/>
+
+The types of function parameters can also be inferred by using `anytype` in
+place of a type. [`@TypeOf`](https://ziglang.org/documentation/master/#TypeOf)
+can then be used on the parameter.
+
+<Code code={ComptimeAnytype} collapse="1-2" lang="zig"/>
+
+Comptime also introduces the operators `++` and `**` for concatenating and
+repeating arrays and slices. These operators do not work at runtime.
+
+<Code code={ComptimeConcatRepeat} collapse="1-4" lang="zig"/>
