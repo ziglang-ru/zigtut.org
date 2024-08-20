@@ -2,7 +2,12 @@
 #
 # SPDX-License-Identifier: CC0-1.0
 
-zig.guide/
+# Zig Build System
+zig-out/
+.zig-cache/
+
+junk_file.txt
+junk_file2.txt
 
 # build output
 dist/

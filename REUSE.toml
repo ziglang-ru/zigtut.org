@@ -6,7 +6,9 @@ version = 1
 
 [[annotations]]
 path = "src/content/docs/**/*.zig"
-precedence = "override"
+# Licensing and copyright info in file header, if any, has precedence over this.
+# This is a fallback for files that do not have this header.
+precedence = "closest"
 SPDX-FileCopyrightText = [
 	"2020 Sobeston and zig.guide contributors",
 	"2024 BratishkaErik and zigtutor.ru contributors",

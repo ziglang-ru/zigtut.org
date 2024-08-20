@@ -1,0 +1,27 @@
+// SPDX-FileCopyrightText: 2024 BratishkaErik and zigtutor.ru contributors
+//
+// SPDX-License-Identifier: CC0-1.0
+
+.{
+    .name = "zigtutor.ru",
+    .version = "0.0.0",
+    .dependencies = .{
+        .getting_started = .{
+            .path = "src/content/docs/00-getting-started/",
+        },
+        .language_basics = .{
+            .path = "src/content/docs/01-language-basics/",
+        },
+        .standard_library = .{
+            .path = "src/content/docs/02-standard-library/",
+        },
+        .build_system = .{
+            .path = "src/content/docs/03-build-system/",
+        },
+        .working_with_c = .{
+            .path = "src/content/docs/04-working-with-c/",
+        },
+    },
+
+    .paths = .{""},
+}
