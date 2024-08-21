@@ -1,6 +1,6 @@
 ---
 # SPDX-FileCopyrightText: 2020 Sobeston and zig.guide contributors
-# SPDX-FileCopyrightText: 2024 BratishkaErik and zigtutor.ru contributors
+# SPDX-FileCopyrightText: 2024 BratishkaErik and zigtut.org contributors
 #
 # SPDX-License-Identifier: MIT
 

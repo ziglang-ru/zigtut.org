@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2024 BratishkaErik and zigtutor.ru contributors
+// SPDX-FileCopyrightText: 2024 BratishkaErik and zigtut.org contributors
 //
 // SPDX-License-Identifier: CC0-1.0
 
@@ -9,13 +9,13 @@ import starlight from "@astrojs/starlight";
 export default defineConfig({
 	integrations: [
 		starlight({
-			title: "ZigTutor.ru",
+			title: "ZigTut.Org",
 			favicon: "/zig-mark.svg",
 			social: {
-				github: "https://github.com/ziglang-ru/zigtutor.ru",
+				github: "https://github.com/ziglang-ru/zigtut.org",
 			},
 			editLink: {
-				baseUrl: "https://github.com/ziglang-ru/zigtutor.ru/edit/main/",
+				baseUrl: "https://github.com/ziglang-ru/zigtut.org/edit/main/",
 			},
 			lastUpdated: true,
 			sidebar: [

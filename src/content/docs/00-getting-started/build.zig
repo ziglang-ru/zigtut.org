@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2024 BratishkaErik and zigtutor.ru contributors
+// SPDX-FileCopyrightText: 2024 BratishkaErik and zigtut.org contributors
 //
 // SPDX-License-Identifier: CC0-1.0
 

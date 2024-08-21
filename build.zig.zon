@@ -1,9 +1,9 @@
-// SPDX-FileCopyrightText: 2024 BratishkaErik and zigtutor.ru contributors
+// SPDX-FileCopyrightText: 2024 BratishkaErik and zigtut.org contributors
 //
 // SPDX-License-Identifier: CC0-1.0
 
 .{
-    .name = "zigtutor.ru",
+    .name = "zigtut.org",
     .version = "0.0.0",
     .dependencies = .{
         .getting_started = .{
