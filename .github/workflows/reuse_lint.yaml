@@ -1,0 +1,19 @@
+# SPDX-FileCopyrightText: 2022 Free Software Foundation Europe e.V. <https://fsfe.org>
+# SPDX-License-Identifier: CC0-1.0
+
+name: REUSE
+on:
+  merge_group:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+jobs:
+  compliance:
+    runs-on: ubuntu-24.04
+    name: Check for compliance
+    steps:
+      - name: Checkout last commit
+        uses: actions/checkout@v4
+      - name: Lint missing copyright and licensing information
+        uses: fsfe/reuse-action@v5
