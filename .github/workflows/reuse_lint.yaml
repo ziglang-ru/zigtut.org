@@ -15,5 +15,7 @@ jobs:
     steps:
       - name: Checkout last commit
         uses: actions/checkout@v4
+        with:
+          persist-credentials: false
       - name: Lint missing copyright and licensing information
         uses: fsfe/reuse-action@v5
